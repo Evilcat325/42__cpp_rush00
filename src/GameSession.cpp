@@ -1,7 +1,7 @@
 #include "GameSession.hpp"
 
 GameSession::GameSession(WINDOW &screen, Player &p1)
-		: NcursesRenderable(screen), p1(p1)
+		: screen(screen), p1(p1)
 {
 }
 
@@ -10,7 +10,7 @@ GameSession::~GameSession()
 }
 
 GameSession::GameSession(GameSession const &rhs)
-		: NcursesRenderable(rhs.screen), p1(rhs.p1)
+		: screen(rhs.screen), p1(rhs.p1)
 {
 	*this = rhs;
 }
@@ -26,11 +26,14 @@ void GameSession::start()
 	int ch;
 	while (state == RUNNING || state == PAUSED)
 	{
-		if ((ch = getch()) != ERR)
-			p1.moveByChar(ch);
 
+		if ((ch = getch()) != ERR)
+		{
+			p1.moveByChar(ch);
+		}
+
+		wclear(&screen);
 		render();
-		wrefresh(stdscr);
 	}
 	state = ENDED;
 }

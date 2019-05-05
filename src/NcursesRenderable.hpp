@@ -2,15 +2,14 @@
 #define FT_NCURSESRENDERABLE_HPP
 
 #include "IRenderable.hpp"
+#include "IMoveable.hpp"
 
-class NcursesRenderable : public virtual IRenderable
+class NcursesRenderable : virtual public IRenderable, virtual public IMoveable
 {
 protected:
 	WINDOW &screen;
 	int height;
 	int width;
-	int row;
-	int col;
 
 public:
 	NcursesRenderable(WINDOW &screen);

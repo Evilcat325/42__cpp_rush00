@@ -22,5 +22,7 @@ Player &Player::operator=(Player const &)
 
 void Player::render()
 {
-	mvwaddch(&screen, row, col, 'X');
+	mvwaddstr(&screen, row, col, "XXX");
+	mvwaddstr(&screen, row + 1, col, "XXX");
+	mvwaddstr(&screen, row + 2, col, "XXX");
 }
