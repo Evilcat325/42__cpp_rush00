@@ -21,6 +21,7 @@ public:
 	virtual void render() const;
 	void updateScreenSize();
 	void moveByChar(int key);
+	void moveByTime();
 };
 
 #endif /* FT_NcursesRenderer_HPP */

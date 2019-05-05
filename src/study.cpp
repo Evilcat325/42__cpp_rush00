@@ -2,6 +2,7 @@
 #include <iostream>
 #include "GameSession.hpp"
 #include "Player.hpp"
+#include "Enemy.hpp"
 
 void initialization()
 {

@@ -1,7 +1,7 @@
 #include "NcursesRenderable.hpp"
 
 NcursesRenderable::NcursesRenderable(WINDOW &screen)
-		: screen(screen), row(0), col(0)
+	: screen(screen), row(0), col(0)
 {
 	updateScreenSize();
 }
@@ -11,7 +11,7 @@ NcursesRenderable::~NcursesRenderable()
 }
 
 NcursesRenderable::NcursesRenderable(NcursesRenderable const &rhs)
-		: screen(rhs.screen)
+	: screen(rhs.screen)
 {
 	*this = rhs;
 }
