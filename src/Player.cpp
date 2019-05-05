@@ -22,7 +22,13 @@ Player &Player::operator=(Player const &)
 
 void Player::render()
 {
-	mvwaddstr(&screen, row, col, "XXX");
-	mvwaddstr(&screen, row + 1, col, "XXX");
-	mvwaddstr(&screen, row + 2, col, "XXX");
+	mvwaddstr(&screen, row, col, " * ");
+	mvwaddstr(&screen, row + 1, col, "*X*");
+	mvwaddstr(&screen, row + 2, col, "-*-");
+}
+
+void Player::init()
+{
+	this->row = height - 3;
+	this->col = (width - 3) / 2;
 }

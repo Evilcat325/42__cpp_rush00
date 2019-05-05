@@ -7,6 +7,8 @@
 #include "ncurses.h"
 #include "IRenderable.hpp"
 #include <iostream>
+#include <string>
+#include <sstream>
 
 enum GameState
 {
@@ -28,6 +30,7 @@ public:
 	GameSession(GameSession const &rhs);
 	GameSession &operator=(GameSession const &rhs);
 
+	bool isPlayerOneMove(int key);
 	void render();
 };
 

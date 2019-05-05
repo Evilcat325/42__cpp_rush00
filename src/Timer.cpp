@@ -34,13 +34,13 @@ void Timer::start()
 		if (duration > frame_time)
 		{
 			frame++;
-			while ((frame_time += 1.0 / 60.0) < duration)
+			while ((frame_time += 1.0 / 120.0) < duration)
 				;
 			obj.render();
 		}
 		if (duration > sec)
 		{
-			std::cout << frame << std::endl;
+			//	std::cout << frame << std::endl;
 			frame = 0;
 			sec++;
 		}

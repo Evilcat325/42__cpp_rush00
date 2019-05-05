@@ -12,7 +12,7 @@ void initialization()
 	keypad(stdscr, TRUE);
 	noecho();
 	nodelay(stdscr, TRUE);
-	curs_set(2);
+	curs_set(0);
 }
 
 void end()
@@ -27,17 +27,17 @@ void print()
 
 int main()
 {
-	// initialization();
-	// if (stdscr == NULL)
-	// {
-	// 	std::cout << "Error reading default window" << std::endl;
-	// 	return 0;
-	// }
+	initialization();
+	if (stdscr == NULL)
+	{
+		std::cout << "Error reading default window" << std::endl;
+		return 0;
+	}
 
 	Player p1(*stdscr);
 	GameSession game(*stdscr, p1);
 	Timer t(game);
 	t.start();
-	// end();
+	end();
 	return 0;
 }

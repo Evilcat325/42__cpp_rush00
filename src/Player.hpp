@@ -14,6 +14,7 @@ public:
 	Player &operator=(Player const &rhs);
 
 	void render();
+	void init();
 };
 
 #endif /* FT_Player_HPP */
