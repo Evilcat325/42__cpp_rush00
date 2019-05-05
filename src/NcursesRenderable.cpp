@@ -1,8 +1,14 @@
 #include "NcursesRenderable.hpp"
 
 NcursesRenderable::NcursesRenderable(WINDOW &screen)
+<<<<<<< HEAD
 	: screen(screen), row(0), col(0)
+=======
+		: screen(screen)
+>>>>>>> 0a0eec4c99791ab0006bae18c73320d1f627a5b1
 {
+	row = 0;
+	col = 0;
 	updateScreenSize();
 }
 
@@ -30,10 +36,10 @@ void NcursesRenderable::moveByChar(int key)
 {
 	if (key == KEY_UP && row - 1 >= 0)
 		--row;
-	else if (key == KEY_DOWN && row + 1 < height)
+	else if (key == KEY_DOWN && row + 3 < height)
 		++row;
 	else if (key == KEY_LEFT && col - 1 >= 0)
 		--col;
-	else if (key == KEY_RIGHT && col + 1 < width)
+	else if (key == KEY_RIGHT && col + 3 < width)
 		++col;
 }

@@ -3,8 +3,12 @@
 
 class IMoveable
 {
+protected:
+	int row;
+	int col;
+
 public:
-	virtual void move() = 0;
+	virtual void moveByChar(int key) = 0;
 };
 
 #endif /* FT_IMoveable_HPP */

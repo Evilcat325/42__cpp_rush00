@@ -3,7 +3,11 @@
 
 #include "NcursesRenderable.hpp"
 #include "Player.hpp"
+<<<<<<< HEAD
 #include "Enemy.hpp"
+=======
+#include "ncurses.h"
+>>>>>>> 0a0eec4c99791ab0006bae18c73320d1f627a5b1
 
 enum GameState
 {
@@ -12,10 +16,11 @@ enum GameState
 	ENDED
 };
 
-class GameSession : public virtual NcursesRenderable
+class GameSession
 {
 private:
 	GameState state;
+	WINDOW &screen;
 	Player &p1;
 
 public:
