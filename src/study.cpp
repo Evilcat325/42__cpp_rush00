@@ -1,7 +1,13 @@
 #include <ncurses.h>
 
+void initialization()
+{
+	initscr();
+	cbreak();
+	keypad(stdscr, TRUE);
+	noecho();
+}
 //  key code        description
-
 //            KEY_DOWN        The four arrow keys ...
 //            KEY_UP
 //            KEY_LEFT
@@ -14,25 +20,14 @@
 //            KEY_ENTER       Enter or send
 int main()
 {
-	int nlines, ncols, y0, x0;
-	x0 = 5;
-	y0 = 5;
-	nlines = 500;
-	ncols = 500;
-	initscr(); /* Start curses mode            */
-	cbreak();
-	keypad(stdscr, TRUE); /* We get F1, F2 etc..          */
-	noecho();			  /* Don't echo() while we do getch */
-	WINDOW *win = newwin(nlines, ncols, y0, x0);
+	int w = 500, h = 500, x0 = 5, y0 = 5;
 	int ch;
+	initialization();
 	nodelay(stdscr, TRUE);
+	getmaxyx(stdscr, h, w);
 	while (1)
 	{
-		if ((ch = getch()) == ERR)
-		{
-			continue;
-		}
-		else
+		if ((ch = getch()) != ERR)
 		{
 			if (ch == KEY_DOWN)
 				y0 += 1;
@@ -43,18 +38,17 @@ int main()
 			else if (ch == KEY_LEFT)
 				x0 -= 1;
 			else if (ch == KEY_BACKSPACE)
-				whline(win, ACS_BULLET, 250);
-
-			wmove(win, y0, x0);
-			wrefresh(win);
+				whline(stdscr, ACS_BULLET, 250);
+			wmove(stdscr, y0, x0);
+			wrefresh(stdscr);
 		}
 	}
 
 	// wrefresh(win);
 
 	refresh(); /* Print it on to the real screen */
-	getch();   /* Wait for user input */
-	endwin();  /* End curses mode                */
+	getch();	 /* Wait for user input */
 
+	endwin();
 	return 0;
 }
