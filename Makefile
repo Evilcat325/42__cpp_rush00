@@ -1,7 +1,7 @@
 NAME	=	rush
 
 CXX		=	clang++
-CXXFLAG	=	-Wall -Werror -Wextra -Iincludes
+CXXFLAG	=	-Wall -Werror -Wextra -Iincludes -std=c++98
 NCURSES	=	-lncurses
 
 SRC		=	$(wildcard src/*.cpp)
