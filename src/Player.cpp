@@ -19,3 +19,8 @@ Player &Player::operator=(Player const &)
 {
 	return *this;
 }
+
+void Player::render()
+{
+	mvwaddch(&screen, row, col, 'X');
+}

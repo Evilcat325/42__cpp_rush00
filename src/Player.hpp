@@ -12,6 +12,8 @@ public:
 	~Player();
 	Player(Player const &rhs);
 	Player &operator=(Player const &rhs);
+
+	void render();
 };
 
 #endif /* FT_Player_HPP */

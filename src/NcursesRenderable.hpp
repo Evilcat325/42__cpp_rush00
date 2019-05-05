@@ -18,7 +18,6 @@ public:
 	NcursesRenderable(NcursesRenderable const &rhs);
 	NcursesRenderable &operator=(NcursesRenderable const &rhs);
 
-	virtual void render() const;
 	void updateScreenSize();
 	void moveByChar(int key);
 };

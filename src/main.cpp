@@ -10,7 +10,12 @@ void initialization()
 	keypad(stdscr, TRUE);
 	noecho();
 	nodelay(stdscr, TRUE);
-	//curs_set(0);
+	curs_set(0);
+}
+
+void end()
+{
+	endwin();
 }
 
 int main()
@@ -24,6 +29,6 @@ int main()
 	Player p1(*stdscr);
 	GameSession game(*stdscr, p1);
 	game.start();
-	game.end();
+	end();
 	return 0;
 }
