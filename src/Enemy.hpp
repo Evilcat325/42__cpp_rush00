@@ -13,6 +13,8 @@ public:
 	~Enemy();
 	Enemy(Enemy const &rhs);
 	Enemy &operator=(Enemy const &rhs);
+
+	void render();
 };
 
 #endif /* FT_ENEMY_HPP */

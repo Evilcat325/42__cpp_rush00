@@ -20,25 +20,20 @@ GameSession &GameSession::operator=(GameSession const &)
 	return *this;
 }
 
-void GameSession::start()
-{
-	state = RUNNING;
-	int ch;
-	while (state == RUNNING || state == PAUSED)
-	{
-
-		if ((ch = getch()) != ERR)
-		{
-			p1.moveByChar(ch);
-		}
-
-		wclear(&screen);
-		render();
-	}
-	state = ENDED;
-}
-
 void GameSession::render()
 {
-	p1.render();
+	std::cout << "rendering" << std::endl;
+	// int ch;
+	// state = RUNNING;
+	// while (state == RUNNING || state == PAUSED)
+	// {
+	// 	if ((ch = getch()) != ERR)
+	// 	{
+	// 		p1.moveByChar(ch);
+	// 	}
+
+	// 	wclear(&screen);
+	// 	render();
+	// }
+	state = ENDED;
 }

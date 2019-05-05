@@ -1,7 +1,7 @@
 #include "Enemy.hpp"
 
 Enemy::Enemy(WINDOW &screen)
-	: NcursesRenderable(screen)
+		: NcursesRenderable(screen)
 {
 }
 
@@ -10,7 +10,7 @@ Enemy::~Enemy()
 }
 
 Enemy::Enemy(Enemy const &rhs)
-	: NcursesRenderable(rhs.screen)
+		: NcursesRenderable(rhs.screen)
 {
 	*this = rhs;
 }
@@ -18,4 +18,8 @@ Enemy::Enemy(Enemy const &rhs)
 Enemy &Enemy::operator=(Enemy const &)
 {
 	return *this;
+}
+
+void Enemy::render()
+{
 }

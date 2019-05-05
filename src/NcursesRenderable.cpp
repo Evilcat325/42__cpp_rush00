@@ -39,3 +39,7 @@ void NcursesRenderable::moveByChar(int key)
 	else if (key == KEY_RIGHT && col + 3 < width)
 		++col;
 }
+
+void NcursesRenderable::render()
+{
+}

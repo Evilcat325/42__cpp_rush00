@@ -5,6 +5,8 @@
 #include "Player.hpp"
 #include "Enemy.hpp"
 #include "ncurses.h"
+#include "IRenderable.hpp"
+#include <iostream>
 
 enum GameState
 {
@@ -13,7 +15,7 @@ enum GameState
 	ENDED
 };
 
-class GameSession
+class GameSession : virtual public IRenderable
 {
 private:
 	GameState state;
@@ -26,7 +28,6 @@ public:
 	GameSession(GameSession const &rhs);
 	GameSession &operator=(GameSession const &rhs);
 
-	void start();
 	void render();
 };
 
