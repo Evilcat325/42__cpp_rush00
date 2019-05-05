@@ -16,17 +16,16 @@ class GameSession : public virtual NcursesRenderable
 {
 private:
 	GameState state;
-	Player p1;
-	// Enemsy *e;
+	Player &p1;
 
 public:
-	GameSession(WINDOW &screen, Player const &p1);
+	GameSession(WINDOW &screen, Player &p1);
 	~GameSession();
 	GameSession(GameSession const &rhs);
 	GameSession &operator=(GameSession const &rhs);
 
 	void start();
-	void end();
+	void render();
 };
 
 #endif /* FT_GameSession_HPP */

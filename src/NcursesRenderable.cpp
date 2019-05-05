@@ -21,11 +21,6 @@ NcursesRenderable &NcursesRenderable::operator=(NcursesRenderable const &)
 	return *this;
 }
 
-void NcursesRenderable::render() const
-{
-	wmove(&screen, row, col);
-}
-
 void NcursesRenderable::updateScreenSize()
 {
 	getmaxyx(&screen, height, width);
@@ -41,5 +36,4 @@ void NcursesRenderable::moveByChar(int key)
 		--col;
 	else if (key == KEY_RIGHT && col + 1 < width)
 		++col;
-	render();
 }
