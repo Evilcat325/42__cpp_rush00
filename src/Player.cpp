@@ -1,6 +1,7 @@
 #include "Player.hpp"
 
-Player::Player()
+Player::Player(WINDOW &screen)
+		: NcursesRenderable(screen)
 {
 }
 
@@ -9,9 +10,12 @@ Player::~Player()
 }
 
 Player::Player(Player const &rhs)
+		: NcursesRenderable(rhs.screen)
 {
+	*this = rhs;
 }
 
-Player &Player::operator=(Player const &rhs)
+Player &Player::operator=(Player const &)
 {
+	return *this;
 }

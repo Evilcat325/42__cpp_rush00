@@ -1,12 +1,14 @@
 #ifndef FT_PLAYER_HPP
 #define FT_PLAYER_HPP
 
-class Player
+#include "ncurses.h"
+#include "NcursesRenderable.hpp"
+
+class Player : virtual public NcursesRenderable
 {
 private:
-	/* data */
 public:
-	Player();
+	Player(WINDOW &screen);
 	~Player();
 	Player(Player const &rhs);
 	Player &operator=(Player const &rhs);
