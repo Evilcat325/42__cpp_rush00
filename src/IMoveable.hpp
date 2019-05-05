@@ -3,8 +3,6 @@
 
 class IMoveable
 {
-private:
-	/* data */
 public:
 	virtual void move() = 0;
 };
