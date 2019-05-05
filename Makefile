@@ -18,6 +18,9 @@ obj/%.o	: 	src/%.cpp
 $(NAME)	: 	obj $(OBJ)
 			$(CXX) $(OBJ) -o $(NAME) $(NCURSES)
 
+install:
+	cp $(NAME) /usr/local/bin
+
 clean	:
 			rm -rf $(OBJ)
 
