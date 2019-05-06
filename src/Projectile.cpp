@@ -28,11 +28,6 @@ Projectile &Projectile::operator=(Projectile const &rhs)
 	return *this;
 }
 
-bool Projectile::isOnScreen()
-{
-	return onScreen;
-}
-
 void Projectile::setSpeedPower(int sp, int po)
 {
 	speed = sp;

@@ -12,6 +12,7 @@ protected:
 	int height;
 	int width;
 	int frame;
+	bool onScreen;
 
 public:
 	NcursesRenderable();
@@ -24,6 +25,7 @@ public:
 	void moveByChar(int key);
 	void moveByTime();
 	void setRowCol(int r, int c);
+	bool isOnScreen();
 	virtual bool render();
 	virtual void renderPerSec();
 	virtual void verticalScroll();
