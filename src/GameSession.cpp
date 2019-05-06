@@ -1,9 +1,10 @@
 #include "GameSession.hpp"
 
-GameSession::GameSession(WINDOW &screen, Player &p1, Background &back)
-		: NcursesRenderable(screen), p1(p1), back(back)
+GameSession::GameSession(WINDOW &screen, Player &p1, Player &p2, Background &back)
+	: NcursesRenderable(screen), p1(p1), p2(p2), back(back), p2_joined(false)
 {
 	p1.init();
+	p2.init();
 	updateMap();
 }
 
@@ -12,7 +13,7 @@ GameSession::~GameSession()
 }
 
 GameSession::GameSession(GameSession const &rhs)
-		: NcursesRenderable(rhs.screen), p1(rhs.p1), back(rhs.back)
+	: NcursesRenderable(rhs.screen), p1(rhs.p1), p2(rhs.p2), back(rhs.back)
 {
 	*this = rhs;
 }
@@ -41,14 +42,20 @@ bool GameSession::render()
 			p1.moveByChar(key, true);
 		else if (key == ' ')
 			p1.shoot();
+		else if (key == KEY_F(1))
+			p2_joined = true;
+		else if (p2_joined && isPlayerTwoMove(key))
+			p2.moveByChar(key, true);
+		else if (p2_joined && key == 'f')
+			p2.shoot();
 	}
 
 	wclear(&screen);
 	back.draw_star();
-	p1.render();
 	for (unsigned long i = 0; i < (sizeof(enemy) / sizeof(Enemy)); ++i)
 		enemy[i].render();
-	back.draw_hp(p1);
+	p1Render();
+	p2Render();
 	if ((frame % 12) == 0)
 		detectCollision(map);
 	return true;
@@ -59,10 +66,34 @@ bool GameSession::isPlayerOneMove(int key)
 	return key == KEY_UP || key == KEY_DOWN || key == KEY_LEFT || key == KEY_RIGHT;
 }
 
+bool GameSession::isPlayerTwoMove(int key)
+{
+	return key == 'a' || key == 's' || key == 'd' || key == 'w';
+}
+
 void GameSession::updateMap()
 {
 	map = new int[height * width];
 	memset(map, 0, height * width * sizeof(*map));
+}
+
+void GameSession::p1Render()
+{
+	attron(COLOR_PAIR(PLAYER1_PAIR));
+	p1.render();
+	attroff(COLOR_PAIR(PLAYER1_PAIR));
+	back.draw_hp(p1, 1);
+}
+
+void GameSession::p2Render()
+{
+	if (p2_joined)
+	{
+		attron(COLOR_PAIR(PLAYER2_PAIR));
+		p2.render();
+		attroff(COLOR_PAIR(PLAYER2_PAIR));
+		back.draw_hp(p2, 2);
+	}
 }
 
 int GameSession::detectCollision(int *&)

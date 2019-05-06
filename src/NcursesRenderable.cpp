@@ -1,7 +1,7 @@
 #include "NcursesRenderable.hpp"
 
 NcursesRenderable::NcursesRenderable()
-		: screen(*stdscr)
+	: screen(*stdscr)
 {
 	row = 0;
 	col = 0;
@@ -10,7 +10,7 @@ NcursesRenderable::NcursesRenderable()
 }
 
 NcursesRenderable::NcursesRenderable(WINDOW &screen)
-		: screen(screen)
+	: screen(screen)
 {
 	row = 0;
 	col = 0;
@@ -23,7 +23,7 @@ NcursesRenderable::~NcursesRenderable()
 }
 
 NcursesRenderable::NcursesRenderable(NcursesRenderable const &rhs)
-		: screen(rhs.screen)
+	: screen(rhs.screen)
 {
 	*this = rhs;
 }
@@ -43,13 +43,13 @@ void NcursesRenderable::updateScreenSize()
 
 void NcursesRenderable::moveByChar(int key, bool check)
 {
-	if (key == KEY_UP && (!check || row - 1 >= 0))
+	if ((key == KEY_UP || key == 'w') && (!check || row - 1 >= 0))
 		--row;
-	else if (key == KEY_DOWN && (!check || row + 3 < height))
+	else if ((key == KEY_DOWN || key == 's') && (!check || row + 3 < height))
 		++row;
-	else if (key == KEY_LEFT && (!check || col - 1 >= 0))
+	else if ((key == KEY_LEFT || key == 'a') && (!check || col - 1 >= 0))
 		--col;
-	else if (key == KEY_RIGHT && (!check || col + 3 < width))
+	else if ((key == KEY_RIGHT || key == 'd') && (!check || col + 3 < width))
 		++col;
 }
 
