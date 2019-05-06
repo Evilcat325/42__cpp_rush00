@@ -41,7 +41,10 @@ bool Enemy::render()
 	if ((frame % Enemy::randomInterval) == 0)
 		randomMove();
 	if (frame % 60 == 0 && !attack.isOnScreen())
+	{
 		attack.setRowCol(row, col);
+		attack.setTarget(forward::p1_row, forward::p1_col);
+	}
 
 	if (movedOffScreen())
 		return false;

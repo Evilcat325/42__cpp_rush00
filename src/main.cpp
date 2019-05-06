@@ -6,9 +6,12 @@
 #include "Player.hpp"
 #include "Enemy.hpp"
 #include "Timer.hpp"
+#include "forward.hpp"
 
 int Enemy::randomInterval;
 int Player::player_cout;
+int forward::p1_row;
+int forward::p1_col;
 
 void initialization()
 {

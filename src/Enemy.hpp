@@ -8,6 +8,7 @@
 #include <iostream>
 #include <stdlib.h>
 #include "EnemyProjectile.hpp"
+#include "forward.hpp"
 
 class Enemy : virtual public NcursesRenderable
 {

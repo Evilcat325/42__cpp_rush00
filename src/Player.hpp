@@ -4,6 +4,7 @@
 #include "ncurses.h"
 #include "NcursesRenderable.hpp"
 #include "Projectile.hpp"
+#include "forward.hpp"
 
 class Player : virtual public NcursesRenderable
 {

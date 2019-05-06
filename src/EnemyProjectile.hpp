@@ -17,7 +17,7 @@ public:
 	EnemyProjectile &operator=(EnemyProjectile const &rhs);
 
 	bool render();
-	void setTarget();
+	void setTarget(int r, int c);
 };
 
 #endif /* FT_EnemyProjectile_HPP */

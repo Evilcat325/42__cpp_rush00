@@ -30,8 +30,8 @@ bool Player::render()
 		hp++;
 	if (id == 0)
 	{
-		// GameSession::p1_row = row;
-		// GameSession::p1_col = col;
+		forward::p1_row = row;
+		forward::p1_col = col;
 	}
 	mvwaddstr(&screen, row, col, " * ");
 	mvwaddstr(&screen, row + 1, col, "*X*");
