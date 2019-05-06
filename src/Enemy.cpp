@@ -52,5 +52,5 @@ void Enemy::detectCollision(int *&map)
 {
 	for (int r = 0; r < 3 && row + r < height; ++r)
 		for (int c = 0; c < 3 && col + c < width; ++c)
-			map[(row + r) * width + c] = 1;
+			map[(row + r) * width + col + c] = 1;
 }
