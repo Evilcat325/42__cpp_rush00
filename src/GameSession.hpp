@@ -36,7 +36,7 @@ public:
 	bool isPlayerOneMove(int key);
 	bool render();
 	void renderPerSec();
-	void detectCollision(int *&);
+	int detectCollision(int *&);
 	void updateMap();
 };
 

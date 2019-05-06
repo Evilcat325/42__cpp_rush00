@@ -43,11 +43,10 @@ bool GameSession::render()
 
 	wclear(&screen);
 	back.draw_star();
-	back.draw_hp(p1);
 	p1.render();
 	for (unsigned long i = 0; i < (sizeof(enemy) / sizeof(Enemy)); ++i)
 		enemy[i].render();
-
+	back.draw_hp(p1);
 	if ((frame % 12) == 0)
 		detectCollision(map);
 	return true;
@@ -64,7 +63,7 @@ void GameSession::updateMap()
 	memset(map, 0, height * width * sizeof(*map));
 }
 
-void GameSession::detectCollision(int *&)
+int GameSession::detectCollision(int *&)
 {
 	memset(map, 0, height * width * sizeof(*map));
 	// set projectile to 42
@@ -76,4 +75,5 @@ void GameSession::detectCollision(int *&)
 
 	// check if player die;
 	p1.detectCollision(map);
+	return 0;
 }
