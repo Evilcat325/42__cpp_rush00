@@ -1,3 +1,4 @@
+
 #include <ncurses.h>
 #include <iostream>
 #include "GameSession.hpp"
@@ -7,6 +8,7 @@
 #include "Timer.hpp"
 
 int Enemy::randomInterval;
+int Player::player_cout;
 
 void initialization()
 {
@@ -18,6 +20,7 @@ void initialization()
 	curs_set(0);
 	start_color();
 	Enemy::randomInterval = 30;
+	Player::player_cout = 0;
 }
 
 void end()
