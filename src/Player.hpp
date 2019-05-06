@@ -11,7 +11,7 @@ class Player : virtual public NcursesRenderable
 private:
 	int hp;
 	int score;
-	Projectile attacks[50];
+	Projectile attacks[10];
 
 public:
 	Player(WINDOW &screen);

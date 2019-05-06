@@ -1,7 +1,7 @@
 #include "Player.hpp"
 
 Player::Player(WINDOW &screen)
-	: NcursesRenderable(screen)
+		: NcursesRenderable(screen)
 {
 	hp = 100;
 	score = 1;
@@ -12,7 +12,7 @@ Player::~Player()
 }
 
 Player::Player(Player const &rhs)
-	: NcursesRenderable(rhs.screen)
+		: NcursesRenderable(rhs.screen)
 {
 	*this = rhs;
 }
@@ -31,7 +31,7 @@ bool Player::render()
 	mvwaddstr(&screen, row, col, " * ");
 	mvwaddstr(&screen, row + 1, col, "*X*");
 	mvwaddstr(&screen, row + 2, col, "-*-");
-	for (int i = 0; i < 50; ++i)
+	for (unsigned int i = 0; i < (sizeof(attacks) / sizeof(Projectile)); ++i)
 		if (attacks[i].isOnScreen())
 			attacks[i].render();
 
@@ -55,7 +55,7 @@ int Player::detectCollision(int *&map)
 				score = (score - 10) > 0 ? score - 10 : 0;
 				return 0;
 			}
-	for (int i = 0; i < 50; ++i)
+	for (unsigned int i = 0; i < (sizeof(attacks) / sizeof(Projectile)); ++i)
 		if (attacks[i].isOnScreen())
 			score += attacks[i].detectCollision(map);
 	return 0;
@@ -73,7 +73,7 @@ int Player::getScore()
 
 void Player::shoot()
 {
-	for (int i = 0; i < 25; ++i)
+	for (unsigned int i = 0; i < (sizeof(attacks) / sizeof(Projectile)); ++i)
 	{
 		if (attacks[i].isOnScreen())
 			continue;
