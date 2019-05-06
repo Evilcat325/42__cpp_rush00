@@ -30,7 +30,7 @@ void Timer::start()
 {
 	while (1)
 	{
-		duration = (clock() - base) / (double)CLOCKS_PER_SEC;
+		duration = (clock() - base) / static_cast<double>(CLOCKS_PER_SEC);
 		if (duration > frame_time)
 		{
 			frame++;
