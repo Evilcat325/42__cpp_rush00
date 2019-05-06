@@ -36,7 +36,7 @@ bool Enemy::render()
 		else
 			return false;
 	}
-	if ((frame % 10) == 0)
+	if ((frame % 60) == 0)
 		verticalScroll();
 	if ((frame % 30) == 0)
 		randomMove();
@@ -44,9 +44,9 @@ bool Enemy::render()
 		return false;
 
 	attron(COLOR_PAIR(ENEMY_PAIR));
-	mvwaddstr(&screen, row, col, "/--\\");
-	mvwaddstr(&screen, row + 1, col, "|  |");
-	mvwaddstr(&screen, row + 2, col, "\\--/");
+	mvwaddstr(&screen, row, col, "/-\\");
+	mvwaddstr(&screen, row + 1, col, "| |");
+	mvwaddstr(&screen, row + 2, col, "\\-/");
 	attroff(COLOR_PAIR(ENEMY_PAIR));
 	return true;
 }

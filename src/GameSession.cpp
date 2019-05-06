@@ -1,7 +1,7 @@
 #include "GameSession.hpp"
 
 GameSession::GameSession(WINDOW &screen, Player &p1, Background &back)
-	: NcursesRenderable(screen), p1(p1), back(back)
+		: NcursesRenderable(screen), p1(p1), back(back)
 {
 	p1.init();
 	updateMap();
@@ -12,7 +12,7 @@ GameSession::~GameSession()
 }
 
 GameSession::GameSession(GameSession const &rhs)
-	: NcursesRenderable(rhs.screen), p1(rhs.p1), back(rhs.back)
+		: NcursesRenderable(rhs.screen), p1(rhs.p1), back(rhs.back)
 {
 	*this = rhs;
 }
@@ -24,6 +24,7 @@ GameSession &GameSession::operator=(GameSession const &)
 
 bool GameSession::render()
 {
+	NcursesRenderable::render();
 	int key;
 	if (p1.getHP() == 0)
 	{
@@ -47,7 +48,8 @@ bool GameSession::render()
 	for (unsigned long i = 0; i < (sizeof(enemy) / sizeof(Enemy)); ++i)
 		enemy[i].render();
 
-	detectCollision(map);
+	if ((frame % 12) == 0)
+		detectCollision(map);
 	return true;
 }
 
@@ -69,7 +71,7 @@ void GameSession::detectCollision(int *&)
 	p1.detectCollision(map);
 
 	// set emeny to 1
-	for (int i = 0; i < 10; ++i)
+	for (unsigned long i = 0; i < (sizeof(enemy) / sizeof(Enemy)); ++i)
 		enemy[i].detectCollision(map);
 
 	// check if player die;

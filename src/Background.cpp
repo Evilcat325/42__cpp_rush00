@@ -1,7 +1,7 @@
 #include "Background.hpp"
 
 Background::Background(WINDOW &screen)
-	: screen(screen)
+		: screen(screen)
 {
 	getmaxyx(&screen, height, width);
 	init();
@@ -12,7 +12,7 @@ Background::~Background()
 }
 
 Background::Background(Background const &rhs)
-	: screen(rhs.screen)
+		: screen(rhs.screen)
 {
 	*this = rhs;
 }
@@ -34,8 +34,8 @@ void Background::init()
 
 	for (int i = 0; i < 20; i++)
 	{
-		star_loc[i].x = std::rand() % width;
-		star_loc[i].y = std::rand() % height;
+		star_loc[i].x = rand() % width;
+		star_loc[i].y = rand() % height;
 	}
 	init_pair(PLAYER_PAIR, COLOR_BLUE, COLOR_BLACK);
 	init_pair(ENEMY_PAIR, COLOR_RED, COLOR_BLACK);
@@ -55,7 +55,7 @@ void Background::draw_star()
 			if (star_loc[i].y == height - 3)
 			{
 				star_loc[i].y = 0;
-				star_loc[i].x = std::rand() % width;
+				star_loc[i].x = rand() % width;
 			}
 			else
 				star_loc[i].y += 1;

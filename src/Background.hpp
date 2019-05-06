@@ -6,6 +6,7 @@ class Player;
 #include <iostream>
 #include "Player.hpp"
 #include <sstream>
+#include <stdlib.h>
 
 enum ColorPair
 {

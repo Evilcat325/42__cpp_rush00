@@ -45,7 +45,7 @@ void Player::detectCollision(int *&map)
 	for (int r = 0; r < 3 && row + r < height; ++r)
 		for (int c = 0; c < 3 && col + c < width; ++c)
 			if (map[(row + r) * width + col + c] == 1)
-				hp = (hp - 5) > 0 ? hp - 5 : 0;
+				hp = (hp - 1) > 0 ? hp - 1 : 0;
 	for (int i = 0; i < 50; ++i)
 		if (attacks[i].isOnScreen())
 			attacks[i].detectCollision(map);
