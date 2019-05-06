@@ -3,7 +3,7 @@
 
 #include "NcursesRenderable.hpp"
 
-class Projectile : public NcursesRenderable
+class Projectile : virtual public NcursesRenderable
 {
 private:
 	int speed;
