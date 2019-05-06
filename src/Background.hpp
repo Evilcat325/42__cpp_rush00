@@ -7,6 +7,7 @@ class Player;
 #include "Player.hpp"
 #include <sstream>
 #include <stdlib.h>
+#include "NcursesRenderable.hpp"
 
 enum ColorPair
 {
@@ -17,14 +18,17 @@ enum ColorPair
 	REST_HP_PAIR
 };
 
-class Background
+typedef struct s_loc
+{
+	int x;
+	int y;
+} t_loc;
+
+class Background : virtual public NcursesRenderable
 {
 private:
-	WINDOW &screen;
-	int height;
-	int width;
 	typedef struct s_loc t_loc;
-	t_loc *star_loc;
+	t_loc star_loc[20];
 
 public:
 	Background(WINDOW &screen);
@@ -32,7 +36,6 @@ public:
 	Background(Background const &rhs);
 	Background &operator=(Background const &other);
 
-	void init();
 	void draw_star();
 	void draw_hp(Player &p);
 };

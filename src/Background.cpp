@@ -1,36 +1,8 @@
 #include "Background.hpp"
 
 Background::Background(WINDOW &screen)
-		: screen(screen)
+		: NcursesRenderable(screen)
 {
-	getmaxyx(&screen, height, width);
-	init();
-}
-
-Background::~Background()
-{
-}
-
-Background::Background(Background const &rhs)
-		: screen(rhs.screen)
-{
-	*this = rhs;
-}
-
-Background &Background::operator=(Background const &)
-{
-	return *this;
-}
-
-typedef struct s_loc
-{
-	int x;
-	int y;
-} t_loc;
-
-void Background::init()
-{
-	star_loc = new t_loc[20];
 
 	for (int i = 0; i < 20; i++)
 	{
@@ -42,6 +14,21 @@ void Background::init()
 	init_pair(STAR_PAIR, COLOR_WHITE, COLOR_BLACK);
 	init_pair(HP_PAIR, COLOR_GREEN, COLOR_RED);
 	init_pair(REST_HP_PAIR, COLOR_GREEN, COLOR_GREEN);
+}
+
+Background::~Background()
+{
+}
+
+Background::Background(Background const &rhs)
+		: NcursesRenderable(rhs.screen)
+{
+	*this = rhs;
+}
+
+Background &Background::operator=(Background const &)
+{
+	return *this;
 }
 
 void Background::draw_star()
