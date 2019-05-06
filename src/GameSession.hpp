@@ -6,6 +6,7 @@
 #include "Enemy.hpp"
 #include "ncurses.h"
 #include "IRenderable.hpp"
+#include "Enemy.hpp"
 #include <iostream>
 #include <string>
 #include <sstream>
@@ -23,6 +24,7 @@ private:
 	GameState state;
 	WINDOW &screen;
 	Player &p1;
+	Enemy enemy[10];
 
 public:
 	GameSession(WINDOW &screen, Player &p1);

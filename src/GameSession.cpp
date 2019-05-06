@@ -4,6 +4,9 @@ GameSession::GameSession(WINDOW &screen, Player &p1)
 		: screen(screen), p1(p1)
 {
 	p1.init();
+	for (int i = 0, e = sizeof(enemy); i < e; ++i)
+	{
+	}
 }
 
 GameSession::~GameSession()
@@ -29,8 +32,13 @@ void GameSession::render()
 		if (isPlayerOneMove(key))
 			p1.moveByChar(key);
 	}
+	for (unsigned long i = 0; i < (sizeof(enemy) / sizeof(Enemy)); ++i)
+		enemy[i].randomMove();
+
 	wclear(&screen);
 	p1.render();
+	for (unsigned long i = 0; i < (sizeof(enemy) / sizeof(Enemy)); ++i)
+		enemy[i].render();
 	state = ENDED;
 }
 

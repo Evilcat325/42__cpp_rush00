@@ -10,6 +10,7 @@ protected:
 	WINDOW &screen;
 	int height;
 	int width;
+	int frame;
 
 public:
 	NcursesRenderable(WINDOW &screen);

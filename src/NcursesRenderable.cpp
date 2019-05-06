@@ -5,6 +5,7 @@ NcursesRenderable::NcursesRenderable(WINDOW &screen)
 {
 	row = 0;
 	col = 0;
+	frame = 0;
 	updateScreenSize();
 }
 
@@ -18,8 +19,11 @@ NcursesRenderable::NcursesRenderable(NcursesRenderable const &rhs)
 	*this = rhs;
 }
 
-NcursesRenderable &NcursesRenderable::operator=(NcursesRenderable const &)
+NcursesRenderable &NcursesRenderable::operator=(NcursesRenderable const &rhs)
 {
+	row = rhs.row;
+	col = rhs.col;
+	frame = rhs.frame;
 	return *this;
 }
 
