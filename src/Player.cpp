@@ -26,6 +26,9 @@ bool Player::render()
 	mvwaddstr(&screen, row, col, " * ");
 	mvwaddstr(&screen, row + 1, col, "*X*");
 	mvwaddstr(&screen, row + 2, col, "-*-");
+	for (int i = 0; i < 50; ++i)
+		if (attacks[i].isOnScreen())
+			attacks[i].render();
 	return true;
 }
 
@@ -41,9 +44,24 @@ void Player::detectCollision(int *&map)
 		for (int c = 0; c < 3 && col + c < width; ++c)
 			if (map[(row + r) * width + col + c] == 1)
 				hp = 0;
+	for (int i = 0; i < 50; ++i)
+		if (attacks[i].isOnScreen())
+			attacks[i].detectCollision(map);
 }
 
 int Player::getHP()
 {
 	return hp;
+}
+
+void Player::shoot()
+{
+	for (int i = 0; i < 25; ++i)
+	{
+		if (attacks[i].isOnScreen())
+			continue;
+		attacks[i].setSpeedPower(1, 1);
+		attacks[i].setRowCol(row, col);
+		break;
+	}
 }

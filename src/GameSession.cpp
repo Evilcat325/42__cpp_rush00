@@ -36,6 +36,8 @@ bool GameSession::render()
 	{
 		if (isPlayerOneMove(key))
 			p1.moveByChar(key);
+		else if (key == ' ')
+			p1.shoot();
 	}
 	for (unsigned long i = 0; i < (sizeof(enemy) / sizeof(Enemy)); ++i)
 		enemy[i].randomMove();
@@ -69,7 +71,13 @@ void GameSession::updateMap()
 void GameSession::detectCollision(int *&)
 {
 	memset(map, 0, height * width * sizeof(*map));
+	// set projectile to 42
+	p1.detectCollision(map);
+
+	// set emeny to 1
 	for (int i = 0; i < 10; ++i)
 		enemy[i].detectCollision(map);
+
+	// check if player die;
 	p1.detectCollision(map);
 }

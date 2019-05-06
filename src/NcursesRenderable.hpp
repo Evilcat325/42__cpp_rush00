@@ -14,6 +14,7 @@ protected:
 	int frame;
 
 public:
+	NcursesRenderable();
 	NcursesRenderable(WINDOW &screen);
 	~NcursesRenderable();
 	NcursesRenderable(NcursesRenderable const &rhs);
@@ -22,6 +23,7 @@ public:
 	void updateScreenSize();
 	void moveByChar(int key);
 	void moveByTime();
+	void setRowCol(int r, int c);
 	virtual bool render();
 	virtual void renderPerSec();
 	virtual void verticalScroll();

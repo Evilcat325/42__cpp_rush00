@@ -1,5 +1,14 @@
 #include "NcursesRenderable.hpp"
 
+NcursesRenderable::NcursesRenderable()
+		: screen(*stdscr)
+{
+	row = 0;
+	col = 0;
+	frame = 0;
+	updateScreenSize();
+}
+
 NcursesRenderable::NcursesRenderable(WINDOW &screen)
 		: screen(screen)
 {
@@ -46,6 +55,7 @@ void NcursesRenderable::moveByChar(int key)
 
 bool NcursesRenderable::render()
 {
+	frame++;
 	return true;
 }
 
@@ -61,4 +71,10 @@ void NcursesRenderable::verticalScroll()
 
 void NcursesRenderable::detectCollision(int *&)
 {
+}
+
+void NcursesRenderable::setRowCol(int r, int c)
+{
+	row = r;
+	col = c;
 }

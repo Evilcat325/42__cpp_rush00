@@ -3,11 +3,13 @@
 
 #include "ncurses.h"
 #include "NcursesRenderable.hpp"
+#include "Projectile.hpp"
 
 class Player : virtual public NcursesRenderable
 {
 private:
 	int hp;
+	Projectile attacks[50];
 
 public:
 	Player(WINDOW &screen);
@@ -19,6 +21,7 @@ public:
 	void init();
 	void detectCollision(int *&map);
 	int getHP();
+	void shoot();
 };
 
 #endif /* FT_Player_HPP */
