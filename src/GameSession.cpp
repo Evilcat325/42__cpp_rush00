@@ -1,7 +1,7 @@
 #include "GameSession.hpp"
 
-GameSession::GameSession(WINDOW &screen, Player &p1)
-		: NcursesRenderable(screen), p1(p1)
+GameSession::GameSession(WINDOW &screen, Player &p1, Background &back)
+	: NcursesRenderable(screen), p1(p1), back(back)
 {
 	p1.init();
 	updateMap();
@@ -12,7 +12,7 @@ GameSession::~GameSession()
 }
 
 GameSession::GameSession(GameSession const &rhs)
-		: NcursesRenderable(rhs.screen), p1(rhs.p1)
+	: NcursesRenderable(rhs.screen), p1(rhs.p1), back(rhs.back)
 {
 	*this = rhs;
 }
@@ -41,6 +41,8 @@ bool GameSession::render()
 		enemy[i].randomMove();
 
 	wclear(&screen);
+	back.draw_star();
+	back.draw_hp(p1);
 	p1.render();
 	for (unsigned long i = 0; i < (sizeof(enemy) / sizeof(Enemy)); ++i)
 		enemy[i].render();

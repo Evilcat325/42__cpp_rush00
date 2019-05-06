@@ -1,14 +1,14 @@
 #include "Enemy.hpp"
 
 Enemy::Enemy()
-		: NcursesRenderable(*stdscr)
+	: NcursesRenderable(*stdscr)
 {
 	row = 0;
 	col = width / 2;
 }
 
 Enemy::Enemy(WINDOW &screen)
-		: NcursesRenderable(screen)
+	: NcursesRenderable(screen)
 {
 }
 
@@ -17,7 +17,7 @@ Enemy::~Enemy()
 }
 
 Enemy::Enemy(Enemy const &rhs)
-		: NcursesRenderable(rhs.screen)
+	: NcursesRenderable(rhs.screen)
 {
 	*this = rhs;
 }
@@ -29,9 +29,11 @@ Enemy &Enemy::operator=(Enemy const &)
 
 bool Enemy::render()
 {
+	attron(COLOR_PAIR(ENEMY_PAIR));
 	mvwaddstr(&screen, row, col, "/--\\");
 	mvwaddstr(&screen, row + 1, col, "|  |");
 	mvwaddstr(&screen, row + 2, col, "\\--/");
+	attroff(COLOR_PAIR(ENEMY_PAIR));
 	return true;
 }
 
