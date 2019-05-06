@@ -11,20 +11,19 @@
 #include <string>
 #include <sstream>
 
-enum GameState
-{
-	RUNNING,
-	PAUSED,
-	ENDED
-};
+// enum GameState
+// {
+// 	RUNNING,
+// 	PAUSED,
+// 	ENDED
+// };
 
-class GameSession : virtual public IRenderable
+class GameSession : virtual public NcursesRenderable
 {
 private:
-	GameState state;
-	WINDOW &screen;
 	Player &p1;
 	Enemy enemy[10];
+	int *map;
 
 public:
 	GameSession(WINDOW &screen, Player &p1);
@@ -33,7 +32,10 @@ public:
 	GameSession &operator=(GameSession const &rhs);
 
 	bool isPlayerOneMove(int key);
-	void render();
+	bool render();
+	void renderPerSec();
+	void detectCollision(int *&);
+	void updateMap();
 };
 
 #endif /* FT_GameSession_HPP */

@@ -3,6 +3,7 @@
 
 #include "IRenderable.hpp"
 #include "IMoveable.hpp"
+#include <iostream>
 
 class NcursesRenderable : virtual public IRenderable, virtual public IMoveable
 {
@@ -21,7 +22,10 @@ public:
 	void updateScreenSize();
 	void moveByChar(int key);
 	void moveByTime();
-	virtual void render();
+	virtual bool render();
+	virtual void renderPerSec();
+	virtual void verticalScroll();
+	virtual void detectCollision(int *&);
 };
 
 #endif /* FT_NcursesRenderer_HPP */

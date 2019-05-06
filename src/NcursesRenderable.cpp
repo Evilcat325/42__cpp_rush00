@@ -44,6 +44,21 @@ void NcursesRenderable::moveByChar(int key)
 		++col;
 }
 
-void NcursesRenderable::render()
+bool NcursesRenderable::render()
+{
+	return true;
+}
+
+void NcursesRenderable::renderPerSec()
+{
+	std::cout << "update every sec" << std::endl;
+}
+
+void NcursesRenderable::verticalScroll()
+{
+	row++;
+}
+
+void NcursesRenderable::detectCollision(int *&)
 {
 }

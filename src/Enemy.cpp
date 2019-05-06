@@ -27,11 +27,12 @@ Enemy &Enemy::operator=(Enemy const &)
 	return *this;
 }
 
-void Enemy::render()
+bool Enemy::render()
 {
 	mvwaddstr(&screen, row, col, "/--\\");
 	mvwaddstr(&screen, row + 1, col, "|  |");
 	mvwaddstr(&screen, row + 2, col, "\\--/");
+	return true;
 }
 
 void Enemy::randomMove()
@@ -45,4 +46,11 @@ void Enemy::randomMove()
 	}
 	else
 		frame++;
+}
+
+void Enemy::detectCollision(int *&map)
+{
+	for (int r = 0; r < 3 && row + r < height; ++r)
+		for (int c = 0; c < 3 && col + c < width; ++c)
+			map[(row + r) * width + c] = 1;
 }

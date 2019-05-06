@@ -1,12 +1,10 @@
 #include "GameSession.hpp"
 
 GameSession::GameSession(WINDOW &screen, Player &p1)
-		: screen(screen), p1(p1)
+		: NcursesRenderable(screen), p1(p1)
 {
 	p1.init();
-	for (int i = 0, e = sizeof(enemy); i < e; ++i)
-	{
-	}
+	updateMap();
 }
 
 GameSession::~GameSession()
@@ -14,7 +12,7 @@ GameSession::~GameSession()
 }
 
 GameSession::GameSession(GameSession const &rhs)
-		: screen(rhs.screen), p1(rhs.p1)
+		: NcursesRenderable(rhs.screen), p1(rhs.p1)
 {
 	*this = rhs;
 }
@@ -24,8 +22,14 @@ GameSession &GameSession::operator=(GameSession const &)
 	return *this;
 }
 
-void GameSession::render()
+bool GameSession::render()
 {
+	if (p1.getHP() == 0)
+	{
+		wclear(&screen);
+		mvwaddstr(&screen, 0, 0, "Defeated");
+		return false;
+	}
 	int key;
 	while ((key = getch()) != ERR)
 	{
@@ -39,10 +43,32 @@ void GameSession::render()
 	p1.render();
 	for (unsigned long i = 0; i < (sizeof(enemy) / sizeof(Enemy)); ++i)
 		enemy[i].render();
-	state = ENDED;
+
+	detectCollision(map);
+	return true;
 }
 
 bool GameSession::isPlayerOneMove(int key)
 {
 	return key == KEY_UP || key == KEY_DOWN || key == KEY_LEFT || key == KEY_RIGHT;
+}
+
+void GameSession::renderPerSec()
+{
+	for (unsigned long i = 0; i < (sizeof(enemy) / sizeof(Enemy)); ++i)
+		enemy[i].verticalScroll();
+}
+
+void GameSession::updateMap()
+{
+	map = new int[height * width];
+	memset(map, 0, height * width * sizeof(*map));
+}
+
+void GameSession::detectCollision(int *&)
+{
+	memset(map, 0, height * width * sizeof(*map));
+	for (int i = 0; i < 10; ++i)
+		enemy[i].detectCollision(map);
+	p1.detectCollision(map);
 }

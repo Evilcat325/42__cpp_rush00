@@ -7,14 +7,18 @@
 class Player : virtual public NcursesRenderable
 {
 private:
+	int hp;
+
 public:
 	Player(WINDOW &screen);
 	~Player();
 	Player(Player const &rhs);
 	Player &operator=(Player const &rhs);
 
-	void render();
+	bool render();
 	void init();
+	void detectCollision(int *&map);
+	int getHP();
 };
 
 #endif /* FT_Player_HPP */

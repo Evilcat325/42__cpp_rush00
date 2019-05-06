@@ -43,6 +43,7 @@ void Timer::start()
 			//	std::cout << frame << std::endl;
 			frame = 0;
 			sec++;
+			obj.renderPerSec();
 		}
 	}
 }

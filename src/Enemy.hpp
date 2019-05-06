@@ -7,6 +7,12 @@
 #include <iostream>
 #include <stdlib.h>
 
+// enum EnemyState
+// {
+// 	ONSCREEN,
+// 	OFFSCREEN
+// };
+
 class Enemy : virtual public NcursesRenderable
 {
 private:
@@ -18,7 +24,8 @@ public:
 	Enemy &operator=(Enemy const &rhs);
 
 	void randomMove();
-	void render();
+	bool render();
+	void detectCollision(int *&);
 };
 
 #endif /* FT_ENEMY_HPP */
