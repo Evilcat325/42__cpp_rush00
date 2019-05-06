@@ -24,13 +24,14 @@ GameSession &GameSession::operator=(GameSession const &)
 
 bool GameSession::render()
 {
+	int key;
 	if (p1.getHP() == 0)
 	{
-		wclear(&screen);
-		mvwaddstr(&screen, 0, 0, "Defeated");
-		return false;
+		while ((key = getch()) != ERR)
+			;
+		mvwaddstr(&screen, height / 2 - 1, width / 2 - 5, "Defeated");
+		return true;
 	}
-	int key;
 	while ((key = getch()) != ERR)
 	{
 		if (isPlayerOneMove(key))
