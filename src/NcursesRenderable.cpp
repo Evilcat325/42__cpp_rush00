@@ -1,7 +1,7 @@
 #include "NcursesRenderable.hpp"
 
 NcursesRenderable::NcursesRenderable()
-	: screen(*stdscr)
+		: screen(*stdscr)
 {
 	row = 0;
 	col = 0;
@@ -10,7 +10,7 @@ NcursesRenderable::NcursesRenderable()
 }
 
 NcursesRenderable::NcursesRenderable(WINDOW &screen)
-	: screen(screen)
+		: screen(screen)
 {
 	row = 0;
 	col = 0;
@@ -23,7 +23,7 @@ NcursesRenderable::~NcursesRenderable()
 }
 
 NcursesRenderable::NcursesRenderable(NcursesRenderable const &rhs)
-	: screen(rhs.screen)
+		: screen(rhs.screen)
 {
 	*this = rhs;
 }
@@ -83,6 +83,7 @@ void NcursesRenderable::setRowCol(int r, int c)
 {
 	row = r;
 	col = c;
+	onScreen = true;
 }
 
 bool NcursesRenderable::isOnScreen()
