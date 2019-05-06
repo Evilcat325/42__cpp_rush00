@@ -25,6 +25,8 @@ GameSession &GameSession::operator=(GameSession const &)
 bool GameSession::render()
 {
 	NcursesRenderable::render();
+	if (frame % 600 == 0)
+		Enemy::randomInterval -= Enemy::randomInterval > 5 ? 1 : 0;
 	int key;
 	if (p1.getHP() == 0)
 	{

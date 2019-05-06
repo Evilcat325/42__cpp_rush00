@@ -38,7 +38,7 @@ bool Enemy::render()
 	}
 	if ((frame % 60) == 0)
 		verticalScroll();
-	if ((frame % 30) == 0)
+	if ((frame % Enemy::randomInterval) == 0)
 		randomMove();
 	if (movedOffScreen())
 		return false;
