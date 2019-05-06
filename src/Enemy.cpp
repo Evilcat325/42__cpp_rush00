@@ -38,7 +38,7 @@ bool Enemy::render()
 	}
 	if ((frame % 60) == 0)
 		verticalScroll();
-	if ((frame % 30) == 0)
+	if ((frame % Enemy::randomInterval) == 0)
 		randomMove();
 	if (movedOffScreen())
 		return false;
@@ -67,8 +67,15 @@ void Enemy::randomMove()
 
 int Enemy::detectCollision(int *&map)
 {
+	int pos;
 	for (int r = 0; r < 3 && 0 < row + r && row + r < height; ++r)
 		for (int c = 0; c < 3 && 0 < col + c && col + c < width; ++c)
+		{
+			pos = map[(row + r) * width + col + c];
+			if (pos == 42)
+				onScreen = false;
+
 			map[(row + r) * width + col + c] = 1;
+		}
 	return 0;
 }

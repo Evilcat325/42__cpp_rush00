@@ -26,6 +26,8 @@ GameSession &GameSession::operator=(GameSession const &)
 bool GameSession::render()
 {
 	NcursesRenderable::render();
+	if (frame % 600 == 0)
+		Enemy::randomInterval -= Enemy::randomInterval > 5 ? 1 : 0;
 	int key;
 	if (p1.getHP() == 0)
 	{
@@ -50,11 +52,10 @@ bool GameSession::render()
 
 	wclear(&screen);
 	back.draw_star();
-	p1Render();
-	p2Render();
 	for (unsigned long i = 0; i < (sizeof(enemy) / sizeof(Enemy)); ++i)
 		enemy[i].render();
-
+	p1Render();
+	p2Render();
 	if ((frame % 12) == 0)
 		detectCollision(map);
 	return true;

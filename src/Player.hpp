@@ -10,6 +10,7 @@ class Player : virtual public NcursesRenderable
 {
 private:
 	int hp;
+	int score;
 	Projectile attacks[50];
 
 public:
@@ -22,6 +23,7 @@ public:
 	void init();
 	int detectCollision(int *&map);
 	int getHP();
+	int getScore();
 	void shoot();
 };
 

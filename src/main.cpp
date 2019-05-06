@@ -6,6 +6,8 @@
 #include "Enemy.hpp"
 #include "Timer.hpp"
 
+int Enemy::randomInterval;
+
 void initialization()
 {
 	initscr();
@@ -15,6 +17,7 @@ void initialization()
 	nodelay(stdscr, TRUE);
 	curs_set(0);
 	start_color();
+	Enemy::randomInterval = 30;
 }
 
 void end()
