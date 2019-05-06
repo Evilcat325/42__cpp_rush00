@@ -11,11 +11,13 @@ class Player;
 
 enum ColorPair
 {
-	PLAYER_PAIR = 1,
+	PLAYER1_PAIR = 1,
+	PLAYER2_PAIR,
 	ENEMY_PAIR,
 	STAR_PAIR,
 	HP_PAIR,
-	REST_HP_PAIR
+	P1_REST_HP_PAIR,
+	P2_REST_HP_PAIR
 };
 
 typedef struct s_loc
@@ -37,7 +39,7 @@ public:
 	Background &operator=(Background const &other);
 
 	void draw_star();
-	void draw_hp(Player &p);
+	void draw_hp(Player &p, int n);
 };
 
 #endif

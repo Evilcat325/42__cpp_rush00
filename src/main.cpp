@@ -37,8 +37,9 @@ int main()
 	}
 
 	Player p1(*stdscr);
+	Player p2(*stdscr);
 	Background back(*stdscr);
-	GameSession game(*stdscr, p1, back);
+	GameSession game(*stdscr, p1, p2, back);
 	Timer t(game);
 	t.start();
 	end();
