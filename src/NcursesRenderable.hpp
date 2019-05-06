@@ -29,7 +29,7 @@ public:
 	bool movedOffScreen();
 	virtual bool render();
 	virtual void verticalScroll();
-	virtual void detectCollision(int *&);
+	virtual int detectCollision(int *&);
 };
 
 #endif /* FT_NcursesRenderer_HPP */

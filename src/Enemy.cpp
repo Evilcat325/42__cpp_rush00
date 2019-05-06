@@ -65,9 +65,10 @@ void Enemy::randomMove()
 	moveByChar(keyList[r], false);
 }
 
-void Enemy::detectCollision(int *&map)
+int Enemy::detectCollision(int *&map)
 {
 	for (int r = 0; r < 3 && 0 < row + r && row + r < height; ++r)
 		for (int c = 0; c < 3 && 0 < col + c && col + c < width; ++c)
 			map[(row + r) * width + col + c] = 1;
+	return 0;
 }

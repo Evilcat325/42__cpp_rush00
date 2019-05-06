@@ -74,8 +74,9 @@ bool NcursesRenderable::movedOffScreen()
 	return false;
 }
 
-void NcursesRenderable::detectCollision(int *&)
+int NcursesRenderable::detectCollision(int *&)
 {
+	return 0;
 }
 
 void NcursesRenderable::setRowCol(int r, int c)

@@ -20,7 +20,7 @@ public:
 
 	bool render();
 	void init();
-	void detectCollision(int *&map);
+	int detectCollision(int *&map);
 	int getHP();
 	void shoot();
 };

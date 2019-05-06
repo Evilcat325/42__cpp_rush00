@@ -40,8 +40,9 @@ void Player::init()
 	this->col = (width - 3) / 2;
 }
 
-void Player::detectCollision(int *&map)
+int Player::detectCollision(int *&map)
 {
+	// per PDF could just change the damage to hp = 0;
 	for (int r = 0; r < 3 && row + r < height; ++r)
 		for (int c = 0; c < 3 && col + c < width; ++c)
 			if (map[(row + r) * width + col + c] == 1)
@@ -49,6 +50,7 @@ void Player::detectCollision(int *&map)
 	for (int i = 0; i < 50; ++i)
 		if (attacks[i].isOnScreen())
 			attacks[i].detectCollision(map);
+	return 0;
 }
 
 int Player::getHP()

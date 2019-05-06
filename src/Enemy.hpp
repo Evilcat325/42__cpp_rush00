@@ -21,7 +21,7 @@ public:
 	void randomMove();
 	bool render();
 	void init();
-	void detectCollision(int *&);
+	int detectCollision(int *&);
 };
 
 #endif /* FT_ENEMY_HPP */

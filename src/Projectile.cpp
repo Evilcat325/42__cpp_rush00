@@ -49,7 +49,8 @@ bool Projectile::render()
 	return true;
 }
 
-void Projectile::detectCollision(int *&map)
+int Projectile::detectCollision(int *&map)
 {
 	map[row * width + col] = 42;
+	return 0;
 }

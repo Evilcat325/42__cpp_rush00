@@ -19,7 +19,7 @@ public:
 
 	void setSpeedPower(int sp, int po);
 	bool render();
-	void detectCollision(int *&map);
+	int detectCollision(int *&map);
 };
 
 #endif /* FT_Projectile_HPP */
