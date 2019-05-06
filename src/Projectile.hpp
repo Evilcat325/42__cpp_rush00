@@ -5,9 +5,10 @@
 
 class Projectile : virtual public NcursesRenderable
 {
-private:
+protected:
 	int speed;
 	int power;
+	int mark;
 
 	/* data */
 public:

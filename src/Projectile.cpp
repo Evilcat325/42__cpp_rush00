@@ -5,6 +5,7 @@ Projectile::Projectile()
 	speed = 1;
 	power = 1;
 	onScreen = false;
+	mark = 42;
 }
 
 Projectile::Projectile(int speed, int power) : speed(speed), power(power)
@@ -53,7 +54,7 @@ int Projectile::detectCollision(int *&map)
 {
 	if (map[row * width + col] == 0)
 	{
-		map[row * width + col] = 42;
+		map[row * width + col] = mark;
 		return 0;
 	}
 	else if (map[row * width + col] == 1)
