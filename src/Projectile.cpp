@@ -38,7 +38,7 @@ void Projectile::setSpeedPower(int sp, int po)
 bool Projectile::render()
 {
 	NcursesRenderable::render();
-	if (frame % 30 == 0)
+	if (frame % 10 == 0)
 		--row;
 	if (row < 0)
 	{
