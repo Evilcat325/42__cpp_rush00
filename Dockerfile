@@ -11,6 +11,6 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 COPY src src
 COPY Makefile .
 RUN make && make install
-CMD [ "bash" ]
+CMD [ "rush" ]
 
 
