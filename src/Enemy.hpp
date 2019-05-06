@@ -12,6 +12,8 @@
 class Enemy : virtual public NcursesRenderable
 {
 private:
+	EnemyProjectile attack;
+
 public:
 	Enemy();
 	Enemy(WINDOW &screen);
@@ -20,6 +22,7 @@ public:
 	Enemy &operator=(Enemy const &rhs);
 
 	static int randomInterval;
+
 	void randomMove();
 	bool render();
 	void init();

@@ -40,6 +40,9 @@ bool Enemy::render()
 		verticalScroll();
 	if ((frame % Enemy::randomInterval) == 0)
 		randomMove();
+	if (frame % 60 == 0 && !attack.isOnScreen())
+		attack.setRowCol(row, col);
+
 	if (movedOffScreen())
 		return false;
 
@@ -47,6 +50,8 @@ bool Enemy::render()
 	mvwaddstr(&screen, row, col, "/-\\");
 	mvwaddstr(&screen, row + 1, col, "| |");
 	mvwaddstr(&screen, row + 2, col, "\\-/");
+	if (attack.isOnScreen())
+		attack.render();
 	attroff(COLOR_PAIR(ENEMY_PAIR));
 	return true;
 }
@@ -77,5 +82,6 @@ int Enemy::detectCollision(int *&map)
 
 			map[(row + r) * width + col + c] = 1;
 		}
+	attack.detectCollision(map);
 	return 0;
 }
