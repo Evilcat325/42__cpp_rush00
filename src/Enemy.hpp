@@ -7,10 +7,11 @@
 #include <string>
 #include <iostream>
 #include <stdlib.h>
+#include "EnemyProjectile.hpp"
 
 class Enemy : virtual public NcursesRenderable
 {
-
+private:
 public:
 	Enemy();
 	Enemy(WINDOW &screen);
