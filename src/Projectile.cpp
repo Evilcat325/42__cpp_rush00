@@ -51,6 +51,14 @@ bool Projectile::render()
 
 int Projectile::detectCollision(int *&map)
 {
-	map[row * width + col] = 42;
+	if (map[row * width + col] == 0)
+	{
+		map[row * width + col] = 42;
+		return 0;
+	}
+	else if (map[row * width + col] == 1)
+	{
+		return 100;
+	}
 	return 0;
 }

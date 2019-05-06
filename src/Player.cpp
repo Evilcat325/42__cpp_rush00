@@ -4,6 +4,7 @@ Player::Player(WINDOW &screen)
 		: NcursesRenderable(screen)
 {
 	hp = 100;
+	score = 1;
 }
 
 Player::~Player()
@@ -23,6 +24,10 @@ Player &Player::operator=(Player const &)
 
 bool Player::render()
 {
+	NcursesRenderable::render();
+	if (hp < 100 && (frame % 60) == 0)
+		hp++;
+
 	attron(COLOR_PAIR(PLAYER_PAIR));
 	mvwaddstr(&screen, row, col, " * ");
 	mvwaddstr(&screen, row + 1, col, "*X*");
@@ -46,16 +51,25 @@ int Player::detectCollision(int *&map)
 	for (int r = 0; r < 3 && row + r < height; ++r)
 		for (int c = 0; c < 3 && col + c < width; ++c)
 			if (map[(row + r) * width + col + c] == 1)
-				hp = (hp - 1) > 0 ? hp - 1 : 0;
+			{
+				hp = (hp - 10) > 0 ? hp - 10 : 0;
+				score = (score - 10) > 0 ? score - 10 : 0;
+				return 0;
+			}
 	for (int i = 0; i < 50; ++i)
 		if (attacks[i].isOnScreen())
-			attacks[i].detectCollision(map);
+			score += attacks[i].detectCollision(map);
 	return 0;
 }
 
 int Player::getHP()
 {
 	return hp;
+}
+
+int Player::getScore()
+{
+	return score;
 }
 
 void Player::shoot()
