@@ -2,6 +2,7 @@
 #define FT_ENEMYPROJECTILE_HPP
 
 #include "Projectile.hpp"
+#include "stdlib.h"
 // #include "GameSession.hpp"
 
 class EnemyProjectile : virtual public Projectile
