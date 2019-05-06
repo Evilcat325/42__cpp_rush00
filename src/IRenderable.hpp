@@ -7,7 +7,6 @@ class IRenderable
 {
 public:
 	virtual bool render() = 0;
-	virtual void renderPerSec() = 0;
 };
 
 #endif /* FT_IRenderable_HPP */

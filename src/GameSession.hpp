@@ -23,7 +23,7 @@ class GameSession : virtual public NcursesRenderable
 {
 private:
 	Player &p1;
-	Enemy enemy[10];
+	Enemy enemy[25];
 	int *map;
 
 public:

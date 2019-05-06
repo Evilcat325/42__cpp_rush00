@@ -35,12 +35,10 @@ bool GameSession::render()
 	while ((key = getch()) != ERR)
 	{
 		if (isPlayerOneMove(key))
-			p1.moveByChar(key);
+			p1.moveByChar(key, true);
 		else if (key == ' ')
 			p1.shoot();
 	}
-	for (unsigned long i = 0; i < (sizeof(enemy) / sizeof(Enemy)); ++i)
-		enemy[i].randomMove();
 
 	wclear(&screen);
 	p1.render();
@@ -54,12 +52,6 @@ bool GameSession::render()
 bool GameSession::isPlayerOneMove(int key)
 {
 	return key == KEY_UP || key == KEY_DOWN || key == KEY_LEFT || key == KEY_RIGHT;
-}
-
-void GameSession::renderPerSec()
-{
-	for (unsigned long i = 0; i < (sizeof(enemy) / sizeof(Enemy)); ++i)
-		enemy[i].verticalScroll();
 }
 
 void GameSession::updateMap()

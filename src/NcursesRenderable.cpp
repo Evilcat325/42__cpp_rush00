@@ -41,15 +41,15 @@ void NcursesRenderable::updateScreenSize()
 	getmaxyx(&screen, height, width);
 }
 
-void NcursesRenderable::moveByChar(int key)
+void NcursesRenderable::moveByChar(int key, bool check)
 {
-	if (key == KEY_UP && row - 1 >= 0)
+	if (key == KEY_UP && (!check || row - 1 >= 0))
 		--row;
-	else if (key == KEY_DOWN && row + 3 < height)
+	else if (key == KEY_DOWN && (!check || row + 3 < height))
 		++row;
-	else if (key == KEY_LEFT && col - 1 >= 0)
+	else if (key == KEY_LEFT && (!check || col - 1 >= 0))
 		--col;
-	else if (key == KEY_RIGHT && col + 3 < width)
+	else if (key == KEY_RIGHT && (!check || col + 3 < width))
 		++col;
 }
 
@@ -59,14 +59,19 @@ bool NcursesRenderable::render()
 	return true;
 }
 
-void NcursesRenderable::renderPerSec()
-{
-	std::cout << "update every sec" << std::endl;
-}
-
 void NcursesRenderable::verticalScroll()
 {
 	row++;
+}
+
+bool NcursesRenderable::movedOffScreen()
+{
+	if (row < -2 || row > height || col < -2 || col > width)
+	{
+		onScreen = false;
+		return true;
+	}
+	return false;
 }
 
 void NcursesRenderable::detectCollision(int *&)
@@ -77,4 +82,9 @@ void NcursesRenderable::setRowCol(int r, int c)
 {
 	row = r;
 	col = c;
+}
+
+bool NcursesRenderable::isOnScreen()
+{
+	return onScreen;
 }

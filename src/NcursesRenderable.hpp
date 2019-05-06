@@ -22,12 +22,12 @@ public:
 	NcursesRenderable &operator=(NcursesRenderable const &rhs);
 
 	void updateScreenSize();
-	void moveByChar(int key);
+	void moveByChar(int key, bool check);
 	void moveByTime();
 	void setRowCol(int r, int c);
 	bool isOnScreen();
+	bool movedOffScreen();
 	virtual bool render();
-	virtual void renderPerSec();
 	virtual void verticalScroll();
 	virtual void detectCollision(int *&);
 };

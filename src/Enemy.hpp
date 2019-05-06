@@ -7,12 +7,6 @@
 #include <iostream>
 #include <stdlib.h>
 
-// enum EnemyState
-// {
-// 	ONSCREEN,
-// 	OFFSCREEN
-// };
-
 class Enemy : virtual public NcursesRenderable
 {
 private:
@@ -25,6 +19,7 @@ public:
 
 	void randomMove();
 	bool render();
+	void init();
 	void detectCollision(int *&);
 };
 
