@@ -4,7 +4,6 @@
 #include "ncurses.h"
 #include "NcursesRenderable.hpp"
 #include "Projectile.hpp"
-#include "Background.hpp"
 
 class Player : virtual public NcursesRenderable
 {
@@ -12,6 +11,7 @@ private:
 	int hp;
 	int score;
 	Projectile attacks[10];
+	int id;
 
 public:
 	Player(WINDOW &screen);
@@ -19,6 +19,7 @@ public:
 	Player(Player const &rhs);
 	Player &operator=(Player const &rhs);
 
+	static int player_cout;
 	bool render();
 	void init();
 	int detectCollision(int *&map);

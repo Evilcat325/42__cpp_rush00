@@ -5,6 +5,7 @@ Player::Player(WINDOW &screen)
 {
 	hp = 100;
 	score = 1;
+	id = player_cout++;
 }
 
 Player::~Player()
@@ -27,7 +28,11 @@ bool Player::render()
 	NcursesRenderable::render();
 	if (hp < 100 && (frame % 60) == 0)
 		hp++;
-
+	if (id == 0)
+	{
+		// GameSession::p1_row = row;
+		// GameSession::p1_col = col;
+	}
 	mvwaddstr(&screen, row, col, " * ");
 	mvwaddstr(&screen, row + 1, col, "*X*");
 	mvwaddstr(&screen, row + 2, col, "-*-");
@@ -53,6 +58,16 @@ int Player::detectCollision(int *&map)
 			{
 				hp = (hp - 10) > 0 ? hp - 10 : 0;
 				score = (score - 10) > 0 ? score - 10 : 0;
+				return 0;
+			}
+
+	// check enmey attack
+	for (int r = 0; r < 3 && row + r < height; ++r)
+		for (int c = 0; c < 3 && col + c < width; ++c)
+			if (map[(row + r) * width + col + c] == 10)
+			{
+				hp = (hp - 25) > 0 ? hp - 25 : 0;
+				score = (score - 50) > 0 ? score - 50 : 0;
 				return 0;
 			}
 	for (unsigned int i = 0; i < (sizeof(attacks) / sizeof(Projectile)); ++i)
