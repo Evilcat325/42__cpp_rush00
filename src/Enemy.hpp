@@ -3,6 +3,7 @@
 
 #include "ncurses.h"
 #include "NcursesRenderable.hpp"
+#include "Background.hpp"
 #include <string>
 #include <iostream>
 #include <stdlib.h>

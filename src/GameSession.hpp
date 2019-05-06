@@ -25,9 +25,10 @@ private:
 	Player &p1;
 	Enemy enemy[25];
 	int *map;
+	Background &back;
 
 public:
-	GameSession(WINDOW &screen, Player &p1);
+	GameSession(WINDOW &screen, Player &p1, Background &back);
 	~GameSession();
 	GameSession(GameSession const &rhs);
 	GameSession &operator=(GameSession const &rhs);

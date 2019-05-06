@@ -1,6 +1,7 @@
 #include <ncurses.h>
 #include <iostream>
 #include "GameSession.hpp"
+#include "Background.hpp"
 #include "Player.hpp"
 #include "Enemy.hpp"
 #include "Timer.hpp"
@@ -13,6 +14,7 @@ void initialization()
 	noecho();
 	nodelay(stdscr, TRUE);
 	curs_set(0);
+	start_color();
 }
 
 void end()
@@ -35,7 +37,8 @@ int main()
 	}
 
 	Player p1(*stdscr);
-	GameSession game(*stdscr, p1);
+	Background back(*stdscr);
+	GameSession game(*stdscr, p1, back);
 	Timer t(game);
 	t.start();
 	end();

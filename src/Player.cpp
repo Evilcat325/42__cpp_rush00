@@ -23,12 +23,14 @@ Player &Player::operator=(Player const &)
 
 bool Player::render()
 {
+	attron(COLOR_PAIR(PLAYER_PAIR));
 	mvwaddstr(&screen, row, col, " * ");
 	mvwaddstr(&screen, row + 1, col, "*X*");
 	mvwaddstr(&screen, row + 2, col, "-*-");
 	for (int i = 0; i < 50; ++i)
 		if (attacks[i].isOnScreen())
 			attacks[i].render();
+	attroff(COLOR_PAIR(PLAYER_PAIR));
 	return true;
 }
 

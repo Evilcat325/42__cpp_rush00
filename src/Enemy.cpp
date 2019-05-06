@@ -43,9 +43,11 @@ bool Enemy::render()
 	if (movedOffScreen())
 		return false;
 
+	attron(COLOR_PAIR(ENEMY_PAIR));
 	mvwaddstr(&screen, row, col, "/--\\");
 	mvwaddstr(&screen, row + 1, col, "|  |");
 	mvwaddstr(&screen, row + 2, col, "\\--/");
+	attroff(COLOR_PAIR(ENEMY_PAIR));
 	return true;
 }
 void Enemy::init()
